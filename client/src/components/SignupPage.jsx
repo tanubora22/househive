@@ -1,0 +1,268 @@
+// import React from "react";
+// import { IoArrowBackCircleOutline } from "react-icons/io5";
+// import { FaUserCircle } from "react-icons/fa";
+// import { useNavigate, Link } from 'react-router-dom';
+// import Logo from "/Logo.svg"; 
+
+// const SignupPage = () => {
+
+//   const navigate = useNavigate()
+
+//   const handleBack = () => {
+//     navigate("/")
+//   }
+
+
+//   return (
+//     <div className="flex justify-center items-center h-screen bg-gray-100">
+//       <div className="bg-white rounded-lg shadow-lg flex flex-col md:flex-row w-11/12 md:w-3/4 lg:w-2/3 overflow-hidden">
+//         {/* Left Section */}
+//         <div className="w-full md:w-2/3 p-8 bg-white border rounded-md border-gray-200">
+//           <img src={Logo} alt="Arcadia logo" className="w-32 mb-8" />
+//           <button className="flex items-center space-x-2 mb-6" onClick={handleBack}>
+//             <IoArrowBackCircleOutline className="text-gray-600 text-lg" />
+//             <p className="text-gray-600 cursor-pointer">Go Back</p>
+//           </button>
+
+//           <h1 className="text-2xl font-semibold mb-2">
+//             Become an Arcadia customer
+//           </h1>
+//           <p className="text-gray-600 mb-4">
+//             Let's get you onboard. It's easy.
+//           </p>
+
+//           {/* Form */}
+//           <form className="">
+//             <div>
+//               <label className="block text-sm font-medium text-gray-700 mb-1">
+//                 Name
+//               </label>
+//               <input
+//                 type="text"
+//                 placeholder="Enter your full name"
+//                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-400 focus:outline-none"
+//               />
+//             </div>
+//             <div>
+//               <label className="block text-sm font-medium text-gray-700 mb-1">
+//                 Email Address
+//               </label>
+//               <input
+//                 type="email"
+//                 placeholder="Enter your email"
+//                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-400 focus:outline-none"
+//               />
+//             </div>
+//             <div>
+//               <label className="block text-sm font-medium text-gray-700 mb-1">
+//                 Phone Number
+//               </label>
+//               <input
+//                 type="text"
+//                 placeholder="Enter your phone number"
+//                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-400 focus:outline-none"
+//               />
+//             </div>
+//             <div>
+//               <label className="block text-sm font-medium text-gray-700 mb-1">
+//                 Password
+//               </label>
+//               <input
+//                 type="password"
+//                 placeholder="Enter your password"
+//                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-400 focus:outline-none"
+//               />
+//             </div>
+//             {/* <button
+//               type="submit"
+//               className="w-full bg-indigo-400 text-white py-2 mt-4 rounded-lg font-semibold hover:bg-indigo-500"
+//               // onClick={handleCreate}
+//             >
+//               <Link className="w-full bg-indigo-400 text-white py-2 mt-4 rounded-lg font-semibold hover:bg-indigo-500" to="/HomePage"> Create Account</Link>
+//             </button> */}
+//             <div>
+//                 <Link
+//                   to="/HomePage"
+//                   className="w-full bg-indigo-500 text-white py-2 rounded-md font-semibold hover:bg-indigo-600 block text-center"
+//                 >
+//                   Create Account
+//                 </Link>
+//               </div>
+//           </form>
+
+//           <p className="mt-6 text-gray-600 text-sm">
+//             <Link to="#" className="underline">
+//               Terms of services
+//             </Link>{" "}
+//             |{" "}
+//             <Link to="#" className="underline">
+//               Privacy Policy
+//             </Link>
+//           </p>
+//         </div>
+
+//         {/* Right Section */}
+//         <div className="hidden md:flex md:w-1/3 bg-indigo-400 text-white p-12">
+//           <div className="flex flex-col items-start justify-center w-full">
+//             <FaUserCircle className="text-6xl mb-4" />
+//             <h2 className="text-xl font-semibold mb-4">As an Arcadia basic user:</h2>
+//             <ul className="space-y-3">
+//               {[
+//                 "Lorem ipsum dolor",
+//                 "Lorem ipsum dolor sit amet consectetur.",
+//                 "Lorem ipsum dolor",
+//                 "Lorem ipsum dolor sit amet consectetur.",
+//                 "Lorem ipsum dolor sit amet consectetur. Maleuada feugiat.",
+//               ].map((item, index) => (
+//                 <li key={index} className="flex items-center space-x-2">
+//                   <span className="h-2 w-2 bg-white rounded-full"></span>
+//                   <p>{item}</p>
+//                 </li>
+//               ))}
+//             </ul>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default SignupPage;
+
+import React, { useState } from "react";
+import { IoArrowBackCircleOutline } from "react-icons/io5";
+import { FaUserCircle, FaArrowLeft, FaEye, FaEyeSlash } from "react-icons/fa";
+import { Link, useNavigate } from "react-router-dom";
+import Logo from "/Logo.svg";
+
+const SignupPage = () => {
+  const navigate = useNavigate();
+  const [passwordVisible, setPasswordVisible] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
+  };
+
+  return (
+    <div className="flex justify-center items-center h-screen bg-gray-100 px-4">
+      <div className="bg-white rounded-lg shadow-lg flex flex-col lg:flex-row w-full max-w-6xl overflow-hidden">
+        {/* Left Section */}
+        <div className="w-full lg:w-2/3 p-6 md:p-8 bg-white border rounded-md border-gray-200">
+          <img src={Logo} alt="Arcadia logo" className="w-28 mb-6 md:w-32" />
+          <div className="flex items-center space-x-3 mb-4 md:mb-6">
+            <Link to="/RegistrationPage" className="text-blue-600 flex items-center">
+              <FaArrowLeft className="mr-1" />
+              Go Back
+            </Link>
+          </div>
+
+          {/* Form Section */}
+          <div>
+            <h2 className="text-lg font-medium text-gray-800">Become an Arcadia customer</h2>
+            <p className="text-sm text-gray-500 mb-6">
+            Let's get you onboard. It's easy.
+            </p>
+
+            <form className="space-y-4">
+              {/* Name Input */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                <input
+                  type="text"
+                  placeholder="Enter your full name"
+                  className="w-full px-4 py-2 border rounded-md focus:ring-blue-500 focus:border-blue-500 text-sm"
+                />
+              </div>
+
+              {/* Email Input */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Email Address
+                </label>
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  className="w-full px-4 py-2 border rounded-md focus:ring-blue-500 focus:border-blue-500 text-sm"
+                />
+              </div>
+
+              {/* Phone Number Input */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Phone Number
+                </label>
+                <input
+                  type="tel"
+                  placeholder="Enter your phone number"
+                  className="w-full px-4 py-2 border rounded-md focus:ring-blue-500 focus:border-blue-500 text-sm"
+                />
+              </div>
+
+              {/* Password Input */}
+              <div className="relative">
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Password
+                </label>
+                <input
+                  type={passwordVisible ? "text" : "password"}
+                  placeholder="Enter your password"
+                  className="w-full px-4 py-2 border rounded-md focus:ring-blue-500 focus:border-blue-500 text-sm"
+                />
+                <button
+                  type="button"
+                  onClick={togglePasswordVisibility}
+                  className="absolute right-3 top-8 text-gray-500"
+                >
+                  {passwordVisible ? <FaEyeSlash /> : <FaEye />}
+                </button>
+              </div>
+
+              {/* Save & Continue Button */}
+              <div>
+                <Link
+                  to="/"
+                  className="w-full bg-indigo-500 text-white py-2 rounded-md font-semibold hover:bg-indigo-600 block text-center"
+                >
+                  Create Account
+                </Link>
+              </div>
+            </form>
+          </div>
+
+          <p className="mt-6 text-gray-600 text-sm">
+            <Link to="#" className="underline">
+              Terms of Service
+            </Link>{" "}
+            |{" "}
+            <Link to="#" className="underline">
+              Privacy Policy
+            </Link>
+          </p>
+        </div>
+
+        {/* Right Section */}
+        <div className="hidden lg:flex lg:w-1/3 bg-indigo-500 text-white p-8 md:p-12">
+          <div className="flex flex-col items-start justify-center w-full">
+            <FaUserCircle className="text-6xl mb-4" />
+            <h2 className="text-xl font-semibold mb-4">As an Arcadia user:</h2>
+            <ul className="space-y-3">
+              {[
+                "Access exclusive features",
+                "Track your progress efficiently",
+                "Enjoy seamless integration",
+                "Get premium support",
+              ].map((item, index) => (
+                <li key={index} className="flex items-center space-x-2">
+                  <span className="h-2 w-2 bg-white rounded-full"></span>
+                  <p>{item}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default SignupPage;

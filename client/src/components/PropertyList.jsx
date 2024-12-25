@@ -1,17 +1,24 @@
 import { IoLocationSharp, IoCameraOutline, IoFilmOutline, IoBedOutline, IoManOutline, IoResizeOutline, IoHeartOutline, IoAddCircleOutline } from 'react-icons/io5';
 import "../App.css";
-
+import { useNavigate } from 'react-router-dom';
 const PropertyCard = ({ property }) => {
+  const navigate = useNavigate()
+
+  const handleImage = () => {
+    navigate('/ProductPage')
+  }
+
   return (
     <div className="border border-gray-200 shadow-lg transition-transform duration-300 transform hover:scale-105 w-96" >
       <div className="relative">
-        <a href="/">
+        <div >
           <img
             src={property.image}
             alt={property.title}
             className="w-full h-56 object-cover transition-transform duration-500  hover:object-center"
+            onClick={handleImage}
           />
-        </a>
+        </div>
         <span
           className={`absolute top-4 left-4 px-3 py-1 text-white text-sm rounded ${property.status === 'For Rent' ? 'bg-green-500' : 'bg-orange-500'}`}
         >
@@ -40,7 +47,7 @@ const PropertyCard = ({ property }) => {
           <strong>${property.price}</strong>/Month
         </div>
         <h3 className="text-lg font-semibold mb-2 hover:text-orange-500">
-          <a href="#">{property.title}</a>
+          <a href="">{property.title}</a>
         </h3>
         <p className="text-gray-600 mb-4">{property.description}</p>
         <ul className="flex gap-6 text-gray-600 text-sm">

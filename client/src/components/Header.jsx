@@ -3,7 +3,11 @@ import { BsPerson } from "react-icons/bs";
 import { IoIosSearch } from "react-icons/io";
 import { LuShoppingCart } from "react-icons/lu";
 import { IoMenu, IoClose } from "react-icons/io5";
-import Logo from "/logo.png";
+import { CiLocationOn } from "react-icons/ci";
+import Logo from "/Logo.svg";
+import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+import Homepage from "../pages/Homepage";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,9 +16,11 @@ const Header = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  
+
   return (
     <header className="relative z-20">
-      <div className="bg-gray-900 py-4 ">
+      <div className="bg-gray-700 py-3 ">
         <div className="container mx-auto flex flex-wrap justify-between items-center gap-4 px-4 lg:px-8">
           <ul className="flex gap-4 items-center">
             <li>
@@ -23,7 +29,7 @@ const Header = () => {
                 className="flex items-center gap-2 text-white text-sm font-bold hover:text-orange-500"
               >
                 <IoIosSearch className="text-orange-500 text-lg" />
-                <span>info@homeverse.com</span>
+                <span>info@ardadia.com</span>
               </a>
             </li>
             <li>
@@ -31,15 +37,15 @@ const Header = () => {
                 href="#"
                 className="flex items-center gap-2 text-white text-sm font-bold hover:text-orange-500"
               >
-                <IoIosSearch className="text-orange-500 text-lg" />
-                <address className="not-italic">15/A, Nest Tower, NYC</address>
+                <CiLocationOn className="text-orange-500 text-lg" />
+                <address className="not-italic">Gomti Nagar</address>
               </a>
             </li>
           </ul>
           <div className="flex items-center gap-4">
-          <button className="bg-orange-500 text-white text-sm font-bold px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors duration-300 ease-in-out transform hover:scale-105">
-  Add Listing
-</button>
+            <button className="bg-orange-500 text-white text-sm font-bold px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors duration-300 ease-in-out transform hover:scale-105">
+              Add Listing
+            </button>
 
           </div>
         </div>
@@ -49,15 +55,14 @@ const Header = () => {
       <div className="bg-white py-8 shadow">
         <div className="container mx-auto flex justify-between items-center px-4 lg:px-8">
           {/* Logo */}
-          <a href="#" className="logo">
-            <img src={Logo} alt="Homeverse logo" className="w-32" />
-          </a>
+          <Link to="/Homepage" className="logo">
+            <img src={Logo} alt="Homeverse logo" className="w-32"  />
+          </Link>
 
           {/* Navigation */}
           <nav
-            className={`fixed top-0 left-0 w-64 h-full bg-white  z-30 transform ${
-              isMenuOpen ? "translate-x-0" : "-translate-x-full"
-            } transition-transform lg:transform-none lg:relative lg:bg-transparent lg:flex lg:items-center`}
+            className={`fixed top-0 left-0 w-64 h-full bg-white  z-30 transform ${isMenuOpen ? "translate-x-0" : "-translate-x-full"
+              } transition-transform lg:transform-none lg:relative lg:bg-transparent lg:flex lg:items-center`}
           >
             <div className="p-6 lg:hidden">
               <button
@@ -69,34 +74,34 @@ const Header = () => {
             </div>
             <ul className="flex flex-col lg:flex-row gap-6 text-sm font-semibold text-gray-700 uppercase lg:gap-8">
               <li>
-                <a href="#home" className="hover:text-orange-500">
+                <Link to="#home" className="hover:text-orange-500">
                   Home
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#about" className="hover:text-orange-500">
+                <Link to="#about" className="hover:text-orange-500">
                   About
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#service" className="hover:text-orange-500">
+                <Link to="#service" className="hover:text-orange-500">
                   Service
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#property" className="hover:text-orange-500">
+                <Link to="#property" className="hover:text-orange-500">
                   Property
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#blog" className="hover:text-orange-500">
+                <Link to="#blog" className="hover:text-orange-500">
                   Blog
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#contact" className="hover:text-orange-500">
+                <Link to="#contact" className="hover:text-orange-500">
                   Contact
-                </a>
+                </Link>
               </li>
             </ul>
           </nav>
